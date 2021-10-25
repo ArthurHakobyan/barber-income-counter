@@ -56,6 +56,7 @@ let hb = 1190;
 let k = 0;
 let kb = 1190;
 
+
 // ----------- THIS IS THE FUNCTIONS SECTION -----------
 
 //Function for classic Haircut Cash
@@ -185,7 +186,7 @@ const traditionalShavecash = function () {
   }
 };
 
-//Function for TraditionalShave cash
+//Function for TraditionalShave card
 const traditionalShavecard = function () {
   const trdShaveCard = (document.getElementById('traditionalShaveCard').value =
     ++g);
@@ -252,7 +253,12 @@ const totalCash = function () {
   ];
   const reducer = (previousValue, currentValue) => previousValue + currentValue;
 
-  document.getElementById('totalCash').innerHTML = array1.reduce(reducer);
+
+ const ttlcsh = array1.reduce(reducer);
+ document.getElementById('totalCash').innerHTML = `${ttlcsh} Kč`;
+
+ return ttlcsh;
+
 };
 
 //Total in Card
@@ -283,13 +289,19 @@ const totalCard = function () {
     servise7,
   ];
   const reducer = (previousValue, currentValue) => previousValue + currentValue;
+  
+  const ttlcrd = array1.reduce(reducer);
 
-  document.getElementById('totalCard').innerHTML = array1.reduce(reducer);
+  document.getElementById('totalCard').innerHTML = `${ttlcrd} Kč`;
+
+  return ttlcrd;
+
 };
 
 //Total Card + Total Cash
-const totalCardCash = function () {
-  document.getElementById('totalCardCash').innerHTML =
-    Number(document.getElementById('totalCard').innerHTML) +
-    Number(document.getElementById('totalCash').innerHTML);
+const totalCardCash = function (a, b) {
+  a = totalCash();
+  b = totalCard();
+    const ab = a+b;
+  document.getElementById("totalCardCash").innerHTML = ab + " Kč";
 };
